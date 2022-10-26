@@ -1,0 +1,32 @@
+{
+  "name": "nodejs-api-rest-express",
+  "version": "1.0.0",
+  "description": "Backend con Node.js API REST con Express.js",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "lint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/walternomas/nodejs-api-rest-express.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/walternomas/nodejs-api-rest-express/issues"
+  },
+  "homepage": "https://github.com/walternomas/nodejs-api-rest-express#readme",
+  "devDependencies": {
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.7.1"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
