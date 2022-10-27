@@ -37,6 +37,18 @@ app.get('/categories/:categoryId/products/:productId', (req, res) => {
   })
 });
 
+app.get('/users', (req, res) => {
+  const { limit, offset } = req.query;
+  if(limit && offset) {
+    res.json({
+      limit,
+      offset
+    });
+  }else {
+    res.send('no hay parametros');
+  }
+});
+
 app.listen(port, ()=> {
   console.log('listen on port', port)
 });
