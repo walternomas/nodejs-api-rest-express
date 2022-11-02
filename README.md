@@ -9,3 +9,11 @@ Backend con Node.js API REST con Express.js
 - PATCH
 - POST
 - DELETE
+
+### Recomendaciones antes de enviar a producción
+- Cors
+- Https
+- Procesos de Build
+- Remover logs
+- Seguridad (Helmet)
+- Testing
