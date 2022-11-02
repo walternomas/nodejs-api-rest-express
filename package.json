@@ -8,6 +8,9 @@
     "start": "node index.js",
     "lint": "eslint"
   },
+  "engines": {
+    "node": "16.15.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/walternomas/nodejs-api-rest-express.git"
@@ -23,11 +26,11 @@
     "eslint": "^8.26.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "faker": "^5.5.3",
     "nodemon": "^2.0.20",
     "prettier": "^2.7.1"
   },
   "dependencies": {
+    "faker": "^5.5.3",
     "@hapi/boom": "^10.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
