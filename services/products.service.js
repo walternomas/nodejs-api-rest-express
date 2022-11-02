@@ -31,7 +31,11 @@ class ProductsService {
   }
 
   find() {
-    return this.products;
+    return new Promise((resolve, reject) => {
+      setTimeout(()=> {
+        resolve(this.products);
+      }, 5000);
+    });
   }
 
   findOne(id) {
@@ -41,7 +45,7 @@ class ProductsService {
   update(id, changes) {
     const index = this.products.findIndex(item => item.id === id);
     if(index === -1) {
-      return { error: 'Product not found' };
+      throw new Error('Product not found');
     } else {
       const product = this.products[index];
       this.products[index] = {
