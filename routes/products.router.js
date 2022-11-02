@@ -22,38 +22,45 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   const body = req.body;
+  const newProduct = service.create(body);
   res.status(201).json({
     message: "Product created successfully",
-    data: body
+    data: newProduct
   });
 });
 
 router.put('/:id', (req, res) => {
   const { id } = req.params;
   const body = req.body;
-  res.status(200).json({
-    message: "Product updated successfully",
-    data: body,
-    id,
-  });
+  const product = service.edit(id, body);
+  if (product.error) {
+    res.status(404).send('Product not found');
+  } else {
+    res.status(200).json({
+      message: "Product edited successfully",
+      data: product
+    });
+  }
 });
 
 router.patch('/:id', (req, res) => {
   const { id } = req.params;
   const body = req.body;
-  res.status(200).json({
-    message: "Product updated successfully",
-    data: body,
-    id,
-  });
+  const product = service.update(id, body);
+  if (product.error) {
+    res.status(404).send('Product not found');
+  } else {
+    res.status(200).json({
+      message: "Product updated successfully",
+      data: product
+    });
+  }
 });
 
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
-  res.status(200).json({
-    message: "Product deleted successfully",
-    id,
-  });
+  const rta = service.delete(id);
+  res.status(200).json(rta);
 });
 
 module.exports = router;

@@ -1,4 +1,6 @@
 const faker = require('faker');
+require('dotenv').config();
+
 
 class ProductsService {
 
@@ -8,7 +10,7 @@ class ProductsService {
   }
 
   generate() {
-    const limit = 100;
+    const limit = process.env.PRODUCT_LIMIT;
     for (let index = 0; index < limit; index++) {
       this.products.push({
         id: faker.datatype.uuid(),
@@ -19,8 +21,13 @@ class ProductsService {
     }
   }
 
-  create() {
-
+  create(data) {
+    const newProduct = {
+      id: faker.datatype.uuid(),
+      ...data
+    }
+    this.products.push(newProduct);
+    return newProduct;
   }
 
   find() {
@@ -31,12 +38,41 @@ class ProductsService {
     return this.products.find(item => item.id === id);
   }
 
-  update() {
-
+  update(id, changes) {
+    const index = this.products.findIndex(item => item.id === id);
+    if(index === -1) {
+      return { error: 'Product not found' };
+    } else {
+      const product = this.products[index];
+      this.products[index] = {
+        ...product,
+        ...changes
+      };
+      return this.products[index];
+    }
   }
 
-  delete() {
+  edit(id, data) {
+    const index = this.products.findIndex(item => item.id === id);
+    if(index === -1) {
+      return { error: 'Product not found' };
+    } else {
+      this.products[index] = {
+        id,
+        ...data
+      };
+      return this.products[index];
+    }
+  }
 
+  delete(id) {
+    const index = this.products.indexOf(item => item.id === id);
+    if(index !== -1) {
+      throw new Error('Product not found');
+    } else {
+      this.products.splice(index, 1);
+      return { id };
+    }
   }
 }
 
